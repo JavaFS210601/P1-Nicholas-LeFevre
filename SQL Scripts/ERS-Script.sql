@@ -31,7 +31,10 @@ CREATE TABLE ers_reimbursement(
 	reimb_resolver int,
 	reimb_status_id int,
 	reimb_type_id int,
-	ers_users_fk_auth int REFERENCES ers_users(ers_user_id)
+	CONSTRAINT ers_users_fk_auth FOREIGN KEY (reimb_author) REFERENCES ers_users (ers_users_id),
+	CONSTRAINT ers_users_fk_reslvr FOREIGN KEY (reimb_resolver) REFERENCES ers_users (ers_users_id),
+	CONSTRAINT ers_reimbursement_status_fk FOREIGN KEY (reimb_status_id) REFERENCES ers_reimbursement_status(reimb_status_id),
+	CONSTRAINT ers_reimbursement_type_fk FOREIGN KEY (reimb_type_id) REFERENCES ers_reimbursement_type(reimb_type_id)
 );
 
 --Table for users
@@ -43,7 +46,7 @@ CREATE TABLE ers_users(
 	user_last_name varchar(100)
 	user_email varchar(150),
 	user_role_id int,
-	user_roles_fk int REFERENCES ers_user_roles(ers_user_role_id)
+	CONSTRAINT user_roles_fk FOREIGN KEY (user_role_id) REFERENCES ers_user_roles (ers_user_role_id),
 );
 
 
