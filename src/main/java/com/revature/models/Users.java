@@ -2,12 +2,14 @@ package com.revature.models;
 
 public class Users {
 
+	private int ers_user_id;
 	private String ers_username;
 	private String ers_password;
 	private String user_first_name;
 	private String user_last_name;
 	private String user_email;
 	private int user_role_id;
+	
 	
 
 	
@@ -17,6 +19,22 @@ public class Users {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+
+
+	public Users(int ers_user_id, String ers_username, String ers_password, String user_first_name,
+			String user_last_name, String user_email, int user_role_id) {
+		super();
+		this.ers_user_id = ers_user_id;
+		this.ers_username = ers_username;
+		this.ers_password = ers_password;
+		this.user_first_name = user_first_name;
+		this.user_last_name = user_last_name;
+		this.user_email = user_email;
+		this.user_role_id = user_role_id;
+	}
+
 
 
 
@@ -31,12 +49,16 @@ public class Users {
 		this.user_role_id = user_role_id;
 	}
 
+
+
+
 	@Override
 	public String toString() {
-		return "Users [ers_username=" + ers_username + ", ers_password=" + ers_password + ", user_first_name="
-				+ user_first_name + ", user_last_name=" + user_last_name + ", user_email=" + user_email
-				+ ", user_role_id=" + user_role_id + "]";
+		return "Users [ers_user_id=" + ers_user_id + ", ers_username=" + ers_username + ", ers_password=" + ers_password
+				+ ", user_first_name=" + user_first_name + ", user_last_name=" + user_last_name + ", user_email="
+				+ user_email + ", user_role_id=" + user_role_id + "]";
 	}
+
 
 
 
@@ -45,6 +67,7 @@ public class Users {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((ers_password == null) ? 0 : ers_password.hashCode());
+		result = prime * result + ers_user_id;
 		result = prime * result + ((ers_username == null) ? 0 : ers_username.hashCode());
 		result = prime * result + ((user_email == null) ? 0 : user_email.hashCode());
 		result = prime * result + ((user_first_name == null) ? 0 : user_first_name.hashCode());
@@ -52,6 +75,7 @@ public class Users {
 		result = prime * result + user_role_id;
 		return result;
 	}
+
 
 
 
@@ -68,6 +92,8 @@ public class Users {
 			if (other.ers_password != null)
 				return false;
 		} else if (!ers_password.equals(other.ers_password))
+			return false;
+		if (ers_user_id != other.ers_user_id)
 			return false;
 		if (ers_username == null) {
 			if (other.ers_username != null)
@@ -96,9 +122,25 @@ public class Users {
 
 
 
+
+	public int getErs_user_id() {
+		return ers_user_id;
+	}
+
+
+
+
+	public void setErs_user_id(int ers_user_id) {
+		this.ers_user_id = ers_user_id;
+	}
+
+
+
+
 	public String getErs_username() {
 		return ers_username;
 	}
+
 
 
 
@@ -108,9 +150,11 @@ public class Users {
 
 
 
+
 	public String getErs_password() {
 		return ers_password;
 	}
+
 
 
 
@@ -120,9 +164,11 @@ public class Users {
 
 
 
+
 	public String getUser_first_name() {
 		return user_first_name;
 	}
+
 
 
 
@@ -132,9 +178,11 @@ public class Users {
 
 
 
+
 	public String getUser_last_name() {
 		return user_last_name;
 	}
+
 
 
 
@@ -144,9 +192,11 @@ public class Users {
 
 
 
+
 	public String getUser_email() {
 		return user_email;
 	}
+
 
 
 
@@ -156,9 +206,11 @@ public class Users {
 
 
 
+
 	public int getUser_role_id() {
 		return user_role_id;
 	}
+
 
 
 
@@ -166,5 +218,7 @@ public class Users {
 		this.user_role_id = user_role_id;
 	}
 	
+	
+
 	
 }
