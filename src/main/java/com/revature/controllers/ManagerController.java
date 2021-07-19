@@ -1,5 +1,5 @@
 package com.revature.controllers;
 
-public class ReimbursmentController {
+public class ManagerController {
 
 }
