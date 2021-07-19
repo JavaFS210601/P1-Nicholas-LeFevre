@@ -25,7 +25,34 @@ public class MasterServlet {
 		
 		switch(URI) {
 	
+		case "pastTransactions":
+			ec.getPastTransactions(res);
+			break;
+			
+		case "pendingTransaction":
+			ec.getPendingTransactions(res);
+			break;
+			
+		case "addTransaction":
+			ec.addTransaction(req, res);
+			break;
+			
+		case "getAllTransactions":
+			mc.getAllTransactions(res);
+			break;
+			
+		case "resolveTransaction":
+			mc.resolveTransaction(req, res);
+			break;
+			
+		case "login":
+			lc.login(req, res);
 		}
+		
+	}
+	
+	protected void doPOST(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doGet(req,res);
 	}
 
 }

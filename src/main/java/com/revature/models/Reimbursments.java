@@ -2,6 +2,7 @@ package com.revature.models;
 
 public class Reimbursments {
 
+	private int reimb_id;
 	private String reimb_amount;
 	private String reimb_submitted;
 	private String reimb_resolved;
@@ -10,15 +11,31 @@ public class Reimbursments {
 	private int reimb_resolver;
 	private int reimb_status_id;
 	private int reimb_type_id;
-
+	
 	
 	
 	
 	//Boiler plate code
-	
 	public Reimbursments() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	public Reimbursments(int reimb_id, String reimb_amount, String reimb_submitted, String reimb_resolved,
+			String reimb_description, int reimb_author, int reimb_resolver, int reimb_status_id, int reimb_type_id) {
+		super();
+		this.reimb_id = reimb_id;
+		this.reimb_amount = reimb_amount;
+		this.reimb_submitted = reimb_submitted;
+		this.reimb_resolved = reimb_resolved;
+		this.reimb_description = reimb_description;
+		this.reimb_author = reimb_author;
+		this.reimb_resolver = reimb_resolver;
+		this.reimb_status_id = reimb_status_id;
+		this.reimb_type_id = reimb_type_id;
 	}
 
 
@@ -42,10 +59,10 @@ public class Reimbursments {
 
 	@Override
 	public String toString() {
-		return "Reimbursments [reimb_amount=" + reimb_amount + ", reimb_submitted=" + reimb_submitted
-				+ ", reimb_resolved=" + reimb_resolved + ", reimb_description=" + reimb_description + ", reimb_author="
-				+ reimb_author + ", reimb_resolver=" + reimb_resolver + ", reimb_status_id=" + reimb_status_id
-				+ ", reimb_type_id=" + reimb_type_id + "]";
+		return "Reimbursments [reimb_id=" + reimb_id + ", reimb_amount=" + reimb_amount + ", reimb_submitted="
+				+ reimb_submitted + ", reimb_resolved=" + reimb_resolved + ", reimb_description=" + reimb_description
+				+ ", reimb_author=" + reimb_author + ", reimb_resolver=" + reimb_resolver + ", reimb_status_id="
+				+ reimb_status_id + ", reimb_type_id=" + reimb_type_id + "]";
 	}
 
 
@@ -58,6 +75,7 @@ public class Reimbursments {
 		result = prime * result + ((reimb_amount == null) ? 0 : reimb_amount.hashCode());
 		result = prime * result + reimb_author;
 		result = prime * result + ((reimb_description == null) ? 0 : reimb_description.hashCode());
+		result = prime * result + reimb_id;
 		result = prime * result + ((reimb_resolved == null) ? 0 : reimb_resolved.hashCode());
 		result = prime * result + reimb_resolver;
 		result = prime * result + reimb_status_id;
@@ -90,6 +108,8 @@ public class Reimbursments {
 				return false;
 		} else if (!reimb_description.equals(other.reimb_description))
 			return false;
+		if (reimb_id != other.reimb_id)
+			return false;
 		if (reimb_resolved == null) {
 			if (other.reimb_resolved != null)
 				return false;
@@ -107,6 +127,20 @@ public class Reimbursments {
 		if (reimb_type_id != other.reimb_type_id)
 			return false;
 		return true;
+	}
+
+
+
+
+	public int getReimb_id() {
+		return reimb_id;
+	}
+
+
+
+
+	public void setReimb_id(int reimb_id) {
+		this.reimb_id = reimb_id;
 	}
 
 
@@ -220,6 +254,8 @@ public class Reimbursments {
 	public void setReimb_type_id(int reimb_type_id) {
 		this.reimb_type_id = reimb_type_id;
 	}
+
 	
+
 	
 }
