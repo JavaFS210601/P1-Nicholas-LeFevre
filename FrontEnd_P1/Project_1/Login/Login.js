@@ -4,12 +4,12 @@ document.getElementById("loginbtn").addEventListener('click', loginFunc)
 
 async function loginFunc(){
 
-    let usern = document.getElementById("username").value
-    let userp = document.getElementById("password").value
+    let ers_username = document.getElementById("username").value
+    let ers_password = document.getElementById("password").value
 
     let user = {
-        ers_username: user_name,
-        ers_password: user_password
+        user_name: ers_username,
+        user_password: ers_password
     };
 
     console.log(user)
