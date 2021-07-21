@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.models.ReimbursmentDTO;
-import com.revature.models.Reimbursments;
+import com.revature.models.ReimbursementDTO;
+import com.revature.models.Reimbursements;
 import com.revature.services.ReimbursmentService;
 
 public class ManagerController {
@@ -19,10 +19,37 @@ public class ManagerController {
 	
 	public void getAllTransactions(HttpServletResponse res) throws IOException {
 		
-		List<Reimbursments> list = rs.getAllTransactions();
+		List<Reimbursements> list = rs.getAllTransactions();
 		String json = om.writeValueAsString(list);
 		res.getWriter().print(json);
 		res.setStatus(200);
+	}
+	
+	public void getTicketsByStatus(HttpServletRequest req, HttpServletResponse res) throws IOException{
+		if(req.getMethod().equals("POST")) {
+			BufferedReader reader = req.getReader();
+			
+			StringBuilder sb = new StringBuilder();
+			
+			String line = reader.readLine();
+			
+			while(line != null) {
+				sb.append(line);
+				line = reader.readLine();
+			}
+			
+			String body = new String(sb);
+			
+			ReimbursementDTO rDTO = om.readValue(body, ReimbursementDTO.class);
+			
+			List<Reimbursements> list = rs.filterByStatus(rDTO.reimb_status_id);
+			
+			String json = om.writeValueAsString(list);
+			
+			res.getWriter().print(json);
+			
+			res.setStatus(200);
+		}
 	}
 	
 	public void resolveTransaction(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -40,8 +67,8 @@ public class ManagerController {
 			
 			String body = new String(sb);
 			
-			ReimbursmentDTO rDTO = om.readValue(body, ReimbursmentDTO.class);
-			rs.resolveTransaction(rDTO.reimbursmentId, rDTO.reimbursmentStatus);
+			ReimbursementDTO rDTO = om.readValue(body, ReimbursementDTO.class);
+			rs.resolveTransaction(rDTO.reimb_id, rDTO.reimb_status_id);
 			res.setStatus(200);
 		}
 	}

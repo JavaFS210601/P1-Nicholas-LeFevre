@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.models.ReimbursmentDTO;
-import com.revature.models.Reimbursments;
+import com.revature.models.ReimbursementDTO;
+import com.revature.models.Reimbursements;
 import com.revature.services.ReimbursmentService;
 
 public class EmployeeController {
@@ -19,7 +19,7 @@ public class EmployeeController {
 	
 	public void getPastTransactions(HttpServletResponse res) throws IOException {
 		
-		List<Reimbursments> list = rs.getPastTransactions();
+		List<Reimbursements> list = rs.getPastTransactions();
 		String json = om.writeValueAsString(list);
 		res.getWriter().print(json);
 		res.setStatus(200);
@@ -27,7 +27,7 @@ public class EmployeeController {
 	
 	public void getPendingTransactions(HttpServletResponse res) throws IOException {
 		
-		List<Reimbursments> list = rs.getPendingTransactions();
+		List<Reimbursements> list = rs.getPendingTransactions();
 		String json = om.writeValueAsString(list);
 		res.getWriter().print(json);
 		res.setStatus(200);
@@ -48,8 +48,8 @@ public class EmployeeController {
 			
 			String body = new String(sb);
 			
-			ReimbursmentDTO rDTO = om.readValue(body, ReimbursmentDTO.class);
-			rs.addTransaction(rDTO.typeId, rDTO.description, rDTO.amount);
+			ReimbursementDTO rDTO = om.readValue(body, ReimbursementDTO.class);
+			rs.addTransaction(rDTO.reimb_type_id, rDTO.reimb_description, rDTO.reimb_amount);
 			res.setStatus(200);
 			
 			

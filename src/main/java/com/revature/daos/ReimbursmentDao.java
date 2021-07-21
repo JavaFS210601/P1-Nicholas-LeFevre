@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.models.Reimbursments;
+import com.revature.models.Reimbursements;
 import com.revature.util.ConnectionUtil;
 
 public class ReimbursmentDao implements ReimbursmentDaoInterface {
 
 	@Override
-	public void addReimbursment(int typeId, String description, int amount) {
+	public void addReimbursment(int reimb_type_id, String reimb_description, int reimb_amount) {
 		
 		try (Connection conn = ConnectionUtil.getConnection()){
 			
@@ -24,9 +24,9 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setDouble(1, amount);
-			ps.setString(2, description);
-			ps.setInt(3, typeId);
+			ps.setInt(1, reimb_amount);
+			ps.setString(2, reimb_description);
+			ps.setInt(3, reimb_type_id);
 			
 			ps.executeUpdate();
 			
@@ -38,7 +38,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 	}
 
 	@Override
-	public List<Reimbursments> viewPastTransaction() {
+	public List<Reimbursements> viewPastTransaction() {
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
@@ -50,11 +50,11 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 			
 			rs = ps.executeQuery();
 			
-			List<Reimbursments> list = new ArrayList<>();
+			List<Reimbursements> list = new ArrayList<>();
 			
 			while(rs.next()) {
 				
-				Reimbursments r = new Reimbursments (
+				Reimbursements r = new Reimbursements (
 						
 						rs.getInt("reimb_id"), 
 						rs.getString("reimb_amount"),
@@ -81,7 +81,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 	}
 
 	@Override
-	public List<Reimbursments> viewPendingTransactions() {
+	public List<Reimbursements> viewPendingTransactions() {
 
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
@@ -93,11 +93,11 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 			
 			rs = ps.executeQuery();
 			
-			List<Reimbursments> list = new ArrayList<>();
+			List<Reimbursements> list = new ArrayList<>();
 			
 			while(rs.next()) {
 				
-				Reimbursments r = new Reimbursments (
+				Reimbursements r = new Reimbursements (
 						
 						rs.getInt("reimb_id"), 
 						rs.getString("reimb_amount"),
@@ -124,7 +124,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 	}
 
 	@Override
-	public List<Reimbursments> viewAllTransactions() {
+	public List<Reimbursements> viewAllTransactions() {
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
@@ -136,11 +136,11 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 			
 			rs = ps.executeQuery();
 			
-			List<Reimbursments> list = new ArrayList<>();
+			List<Reimbursements> list = new ArrayList<>();
 			
 			while(rs.next()) {
 				
-				Reimbursments r = new Reimbursments (
+				Reimbursements r = new Reimbursements (
 						
 						rs.getInt("reimb_id"), 
 						rs.getString("reimb_amount"),
@@ -183,6 +183,42 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public List<Reimbursements> filterByStatus(int reimb_status_id) {
+try (Connection conn = ConnectionUtil.getConnection()){
+			
+			ResultSet rs = null;
+			
+			String sql = "SELECT * FROM \"ers\".reimbursements WHERE reimb_status_id = ?;";
+			
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, reimb_status_id);
+			
+			rs = ps.executeQuery();
+			
+			List<Reimbursements> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Reimbursements r = new Reimbursements(
+						rs.getInt("reimb_id"),
+						rs.getString("reimb_amount"),
+						rs.getString("reimb_submitted"),
+						rs.getString("reimb_resolved"),
+						rs.getString("reimb_description"),
+						rs.getInt("reimb_author"),
+						rs.getInt("reimb_resolver"),
+						rs.getInt("reimb_status_id"),
+						rs.getInt("reimb_type_id")
+						);
+				list.add(r);
+			}
+			return list;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

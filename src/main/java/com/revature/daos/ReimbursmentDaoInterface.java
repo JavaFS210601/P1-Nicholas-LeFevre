@@ -2,19 +2,21 @@ package com.revature.daos;
 
 import java.util.List;
 
-import com.revature.models.Reimbursments;
+import com.revature.models.Reimbursements;
 
 public interface ReimbursmentDaoInterface {
 
-	public void addReimbursment(int typeId, String description, int amount);
+	public void addReimbursment(int reimb_type_id, String reimb_description, int reimb_amount);
 	
-	public List<Reimbursments> viewPastTransaction();
+	public List<Reimbursements> viewPastTransaction();
 	
-	public List<Reimbursments> viewPendingTransactions();
+	public List<Reimbursements> viewPendingTransactions();
 	
-	public List<Reimbursments> viewAllTransactions();
+	public List<Reimbursements> viewAllTransactions();
 	
-	public void resolveTransaction(int reimbursmentId, int reimbursmentStatus);
+	public List<Reimbursements> filterByStatus(int reimb_status_id); 
+	
+	public void resolveTransaction(int reimb_id, int reimb_status_id);
 	
 	
 }

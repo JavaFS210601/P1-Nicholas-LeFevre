@@ -1,6 +1,6 @@
 package com.revature.models;
 
-public class Reimbursments {
+public class Reimbursements {
 
 	private int reimb_id;
 	private String reimb_amount;
@@ -16,7 +16,7 @@ public class Reimbursments {
 	
 	
 	//Boiler plate code
-	public Reimbursments() {
+	public Reimbursements() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -24,7 +24,7 @@ public class Reimbursments {
 
 
 
-	public Reimbursments(int reimb_id, String reimb_amount, String reimb_submitted, String reimb_resolved,
+	public Reimbursements(int reimb_id, String reimb_amount, String reimb_submitted, String reimb_resolved,
 			String reimb_description, int reimb_author, int reimb_resolver, int reimb_status_id, int reimb_type_id) {
 		super();
 		this.reimb_id = reimb_id;
@@ -41,7 +41,7 @@ public class Reimbursments {
 
 
 
-	public Reimbursments(String reimb_amount, String reimb_submitted, String reimb_resolved, String reimb_description,
+	public Reimbursements(String reimb_amount, String reimb_submitted, String reimb_resolved, String reimb_description,
 			int reimb_author, int reimb_resolver, int reimb_status_id, int reimb_type_id) {
 		super();
 		this.reimb_amount = reimb_amount;
@@ -95,7 +95,7 @@ public class Reimbursments {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Reimbursments other = (Reimbursments) obj;
+		Reimbursements other = (Reimbursements) obj;
 		if (reimb_amount == null) {
 			if (other.reimb_amount != null)
 				return false;
