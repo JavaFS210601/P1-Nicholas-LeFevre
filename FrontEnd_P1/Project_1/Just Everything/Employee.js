@@ -1,9 +1,9 @@
 const url = 'http://localhost:8080/P1-Nicholas-LeFevre/Employee/'
 
-document.getElementById("pastRequests").addEventListener('click', pastFunc)
-document.getElementById("pendingRequests").addEventListener('click', pendingFunc)
-document.getElementById("sendRequests").addEventListener('click', sendFunc)
-document.getElementById("logout").addEventListener('click', logoutFunc)
+document.getElementById("pastRequests").addEventListener("click", pastFunc)
+document.getElementById("pendingRequests").addEventListener("click", pendingFunc)
+document.getElementById("sendRequests").addEventListener("click", sendFunc)
+document.getElementById("logout").addEventListener("click", logoutFunc)
 
 async function pastFunc(){
     let response = await fetch(url + "previous", {credentials: "include"});
@@ -143,7 +143,7 @@ async function sendFunc(){
     let amount = document.getElementById("amount").value;
 
     let userInput = {
-        reimb_type_id: type_id,
+        reimb_type_id: type,
         reimb_description: description,
         reimb_amount: amount
     };
@@ -154,12 +154,13 @@ async function sendFunc(){
         credentials: "include"
     });
 
-    if(type_id > 0 && type_id < 5){
+    if(type > 0 && type < 5){
         document.getElementById("submitMsg").style.display = "block";
     } else {
         document.getElementById("errorMsg").style.display = "block";
     }  
 }
+
 function logoutFunc(){
-    window.location.replace("C:\Users\Nicholas LeFevre\Documents\GitDocs\Revature\Project_1\P1-Nicholas-LeFevre\FrontEnd_P1\Project_1\Login")
+    window.location.href = "Login.html"
 }

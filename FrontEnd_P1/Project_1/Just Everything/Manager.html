@@ -32,6 +32,16 @@
                 </table>
             </div>
 
+            <div>
+                <h4>Filter Reimbursement Tickets By Status</h4>
+                <p>1) Pending   2) Accepted   3) Rejected</p>
+            </div>
+
+            <div>
+                <input type="number" id="statusFilterInput" />
+                <button id ="filter">Filter</button>
+            </div>
+
             <div class="row">
     
                 <div class="row" id="table-row">
@@ -56,11 +66,15 @@
 
             <div>
                 <input type="number" id="ticketInput" placeholder="ticket id"/>
-                <input type="number" id="statusInput" placeholder="new status id"/>
-                <button id="resolvebutton" class="btn btn-danger">Resolve</button>
+                <input type="number" id="statusInput" placeholder="status id"/>
+                <button id="submit" class="btn btn-danger">Submit</button>
             </div>
 
         </div>
+
+        <header>
+            <button id="logout" class="btn" style="float:right">Logout</button>
+        </header>
 
 <script src="Manager.js"></script>
 </body>
