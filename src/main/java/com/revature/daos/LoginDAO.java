@@ -15,7 +15,7 @@ public class LoginDAO implements LoginDAOInterface {
 			ResultSet rs = null;
 			
 			// might need to add the schema name if dont work
-			String sql = "SELECT ers_username FROM \"ers\".users WHERE ers_username = ?;";
+			String sql = "SELECT ers_username FROM \"project1\".ers_users WHERE ers_username = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, ers_username);
@@ -37,7 +37,7 @@ public class LoginDAO implements LoginDAOInterface {
 			
 			ResultSet rs = null;
 			
-			String sql = "SELECT ers_password FROM \"ers\".users WHERE ers_password = ?;";
+			String sql = "SELECT ers_password FROM \"project1\".ers_users WHERE ers_password = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, ers_password);
