@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
-
-public static Connection getConnection() throws SQLException {
+	
+	public static Connection getConnection() throws SQLException {
 		
 		//For compatibility with other technologies/frameworks, we will need to register our driver
 		//This process makes the application aware of what driver class (what SQL dialect) we're using

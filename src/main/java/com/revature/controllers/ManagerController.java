@@ -25,7 +25,7 @@ public class ManagerController {
 		res.setStatus(200);
 	}
 	
-	public void getTicketsByStatus(HttpServletRequest req, HttpServletResponse res) throws IOException{
+	public void getTransactionByStatus(HttpServletRequest req, HttpServletResponse res) throws IOException{
 		if(req.getMethod().equals("POST")) {
 			BufferedReader reader = req.getReader();
 			

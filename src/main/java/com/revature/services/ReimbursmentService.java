@@ -9,18 +9,18 @@ public class ReimbursmentService {
 
 	ReimbursmentDao rd = new ReimbursmentDao();
 	
-	public void addTransaction(int typeId, String description, int amount) {
+	public void addTransaction(int reimb_type_id, String reimb_description, int reimb_amount) {
 		
-		if(typeId > 0 && typeId < 5) {
-			rd.addReimbursment(typeId, description, amount);
+		if(reimb_type_id > 0 && reimb_type_id < 5) {
+			rd.addReimbursment(reimb_type_id, reimb_description, reimb_amount);
 		}else {
 			System.out.println("Unable to add a new transaction");
 		}
 	}
 	
-	public void resolveTransaction(int reimbursmentId, int reimbursmentStatus) {
-		if(reimbursmentStatus > 0 && reimbursmentStatus < 4) {
-			rd.resolveTransaction(reimbursmentId, reimbursmentStatus);
+	public void resolveTransaction(int reimb_type_id, int reimb_status_id) {
+		if(reimb_status_id > 0 && reimb_status_id < 4) {
+			rd.resolveTransaction(reimb_type_id, reimb_status_id);
 		}else {
 			
 		}

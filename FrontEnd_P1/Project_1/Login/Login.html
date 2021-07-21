@@ -6,26 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERS Project</title>
 
-    <link rel="stylesheet" href="Login.css">
-</head>
-<body>
-    <form action="action_page.php" method="post">
-        <div class="container">
-          <div id="login-row" class="row">
-            <h1>Please enter your login information for the Employee Reimbursement System!</h1>
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <button type="submit">Login</button>
+
+  </head>
+  <body>
+      <div class="container" id="fullcontainer">
+  
+          <div class="row" id="loginDiv">
+              <p id="errorMsg"></p>
+              <h3>Please enter your login credentials</h3>
+              <input id="username" type="text" placeholder="username">
+              <input id="password" type="password" placeholder="password">  
+              <button id="loginbtn">Login</button>         
           </div>
-        </div>
-      
-        <div class="container" style="background-color:#f1f1f1">
-        </div>
-      </form>
-
-    <script src="Login.js"></script>
-</body>
-</html>
-
+          </div>
+      </div>
+      <script src="Login.js"></script>
+  </body>
+  </html>

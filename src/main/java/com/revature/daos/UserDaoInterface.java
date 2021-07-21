@@ -4,6 +4,6 @@ import com.revature.models.Users;
 
 public interface UserDaoInterface {
 	
-	public Users getUsersUsername(String username);
+	public Users getUsersUsername(String ers_username);
 
 }

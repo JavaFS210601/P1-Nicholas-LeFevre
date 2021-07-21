@@ -17,12 +17,15 @@ public class MasterServlet extends HttpServlet{
 	private ManagerController mc = new ManagerController();
 	private LoginController lc = new LoginController();
 	
+	
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		res.setContentType("application/json");
 		res.setStatus(404);
 		
-		String URI = req.getRequestURI().replace("/project1/", "");
+		String URI = req.getRequestURI().replace("/P1-Nicholas-LeFevre/", "");
+		System.out.println(URI);
 		
 		switch(URI) {
 	
@@ -38,6 +41,10 @@ public class MasterServlet extends HttpServlet{
 			ec.addTransaction(req, res);
 			break;
 			
+		case "filter":
+			mc.getTransactionByStatus(req, res);
+			break;
+			
 		case "getAllTransactions":
 			mc.getAllTransactions(res);
 			break;
@@ -48,12 +55,16 @@ public class MasterServlet extends HttpServlet{
 			
 		case "login":
 			lc.login(req, res);
+			break;
 		}
 		
 	}
 	
-	protected void doPOST(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doGet(req,res);
 	}
+	
+	
+	
 
 }

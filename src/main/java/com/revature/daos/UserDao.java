@@ -11,17 +11,17 @@ import com.revature.util.ConnectionUtil;
 public class UserDao implements UserDaoInterface{
 
 	@Override
-	public Users getUsersUsername(String username) {
+	public Users getUsersUsername(String ers_username) {
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "SELECT * FROM ers_users";
-			
 			ResultSet rs = null;
+			
+			String sql = "SELECT * FROM \"project1\".ers_users WHERE ers_username = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, username);
+			ps.setString(1, ers_username);
 			
 			rs = ps.executeQuery();
 			
