@@ -17,7 +17,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 		
 		try (Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "INSERT INTO ers_reimbursments"
+			String sql = "INSERT INTO \"project1\".ers_reimbursement"
 					
 					+ "(reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id)"
 					+ "values(?, current_timestamp, null, ?, 1, 2, 1, ?);";
@@ -42,7 +42,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "SELECT * FROM ers_reimbursments WHERE reimb_status_id != 1;";
+			String sql = "SELECT * FROM \"project1\".ers_reimbursement WHERE reimb_status_id != 1;";
 			
 			ResultSet rs = null;
 			
@@ -85,7 +85,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "SELECT * FROM ers_reimbursments WHERE reimb_status_id = 1;";
+			String sql = "SELECT * FROM \"project1\".ers_reimbursement WHERE reimb_status_id = 1;";
 			
 			ResultSet rs = null;
 			
@@ -128,7 +128,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 		
 		try(Connection conn = ConnectionUtil.getConnection()){
 			
-			String sql = "SELECT * FROM ers_reimbursments;";
+			String sql = "SELECT * FROM \"project1\".ers_reimbursement;";
 			
 			ResultSet rs = null;
 			
@@ -171,7 +171,7 @@ public class ReimbursmentDao implements ReimbursmentDaoInterface {
 		
 		try (Connection conn = ConnectionUtil.getConnection()) {
 			
-			String sql = "UPDATE ers_reimbursments set reimb_status_id = ?, reimb_resolver = 2, reimb_resolved = current_timestamp WHERE reimb_id = ?;";
+			String sql = "UPDATE ers_reimbursment SET reimb_status_id = ?, reimb_resolver = 2, reimb_resolved = current_timestamp WHERE reimb_id = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
@@ -190,7 +190,7 @@ try (Connection conn = ConnectionUtil.getConnection()){
 			
 			ResultSet rs = null;
 			
-			String sql = "SELECT * FROM \"ers\".reimbursements WHERE reimb_status_id = ?;";
+			String sql = "SELECT * FROM \"project1\".ers_reimbursement WHERE reimb_status_id = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			

@@ -37,6 +37,8 @@ public class LoginController {
 			
 			String body = new String(sb);
 			
+			System.out.println(sb);
+			
 			LoginDTO lDTO = om.readValue(body, LoginDTO.class);
 			
 			System.out.println(lDTO.getErs_username() + lDTO.getErs_password());
